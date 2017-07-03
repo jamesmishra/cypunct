@@ -13,6 +13,14 @@ CPython runtimes are compiled with the flag
 ``--enable-unicode=ucs4``. Cypunct will throw an exception
 if your Python 2 runtime was not compiled with UCS-4.
 
+Installation
+============
+Installation is easiest with pip. Just run
+
+.. code:: bash
+
+    pip install cypunct
+
 
 Usage
 =====
@@ -44,6 +52,7 @@ The below example splits on all Unicode punctuation, and nothing else.
     ['James Mishra is the', ' best human ever', ' or so I think', '']
  
 The following Unicode classes are available as sets:
+
 
 ========  ===========
 Category  Description
@@ -86,6 +95,7 @@ Zp        Separator, Paragraph
 Zs        Separator, Space
 ========  ===========
 
+
 ``cypunct.unicode_classes.COMMON_SEPARATORS`` is the union of the ``C``, ``P``, ``S``, and ``Z``
 ``frozensets``. I have found it personally useful when splitting text for natural
 language processing applications.
@@ -106,6 +116,14 @@ The current ``UnicodeData.txt`` is from ftp://ftp.unicode.org/Public/10.0.0/ucd/
 
 Frequently Asked Questions (FAQ)
 ================================
+**Q: I got an installation error involving
+``pkg_resources.VersionConflict (setuptools xx.xx.xx``.
+How do I fix this?**
+
+You have a very old version of setuptools, and we won't be able to
+compile our Cython extension with it. Run
+``pip install --upgrade setuptools`` and try installing Cypunct again.
+
 **Q: Wouldn't this be way faster if it were written in Pure C?**
 
 Yes, it would. I'm too lazy to hand-code a C CPython extension, but it's on my todo list.
