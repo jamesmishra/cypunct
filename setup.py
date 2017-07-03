@@ -5,8 +5,10 @@ from setuptools import setup
 
 version = '0.1.1.dev0'
 
-DESCRIPTION = """Cypunct is a Cython package to split Unicode
-strings based on a given frozenset of Unicode code points."""
+DESCRIPTION = (
+    "Cypunct is a Cython package to split Unicode "
+    "strings based on a given frozenset of Unicode code points."
+)
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
 with io.open(os.path.join(ROOT, 'README.rst'), encoding='utf8') as f:
@@ -16,6 +18,7 @@ setup(
     name="cypunct",
     description=DESCRIPTION,
     long_description=README,
+    keywords="unicode string splitting",
     author="James Mishra",
     author_email="j@jamesmishra.com",
     url="https://github.com/jamesmishra/cypunct",
