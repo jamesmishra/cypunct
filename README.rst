@@ -9,16 +9,21 @@ Cypunct is a Cython extension, it will only work in the CPython
 runtime.
 
 For Python versions 2.6 and 2.7, Cypunct will only run if these
-CPython runtimes are
+CPython runtimes are compiled with the flag
+``--enable-unicode=ucs4``. Cypunct will throw an exception
+if your Python 2 runtime was not compiled with UCS-4.
+
 
 Usage
 =====
 Cypunct takes a Unicode string and a ``frozenset`` of delimiter characters,
-and splits the string based on that set.
+and splits the string based on that set. Every delimiter character
+should be a single Unicode code point -- ``len(char)`` should be 1.
 
 A simple example, where we provide a small ``frozenset`` is below.
 
 .. code:: python
+
     >>> from cypunct import split
     >>> split("James Mishra is the... best human ever, or so I think.", frozenset({' ', '.', ','}))
     ['James', 'Mishra', 'is', 'the', 'best', 'human', 'ever', 'or', 'so', 'I', 'think', '']
@@ -33,18 +38,59 @@ such as an entire `Unicode character category <http://www.fileformat.info/info/u
 The below example splits on all Unicode punctuation, and nothing else.
 
 .. code:: python
+
     >>> from cypunct.unicode_classes import P
     >>> split("James Mishra is the... best human ever, or so I think.", P)
     ['James Mishra is the', ' best human ever', ' or so I think', '']
  
 The following Unicode classes are available as sets:
-'C', 'Cc', 'Cf', 'Co', 'Cs', 'L', 'Ll', 'Lm', 'Lo', 'Lt', 'Lu', 'M', 'Mc', 'Me', 'Mn', 'N', 'Nd', 'Nl', 'No', 'P', 'Pc', 'Pd', 'Pe', 'Pf', 'Pi', 'Po', 'Ps', 'S', 'Sc', 'Sk', 'Sm', 'So', 'Z', 'Zl', 'Zp', 'Zs'
+
+========  ===========
+Category  Description
+========  ===========
+**C**     **Other**
+Cc        Other, Format
+Cf        Other, Not Assigned
+Co        Other, Private Use
+Cs        Other, Surrogate
+L         Letter
+Ll        Letter, Lowercase
+Lm        Letter, Modifier
+Lo        Letter, Other
+Lt        Letter, Titlecase
+Lu        Letter, Uppercase
+**M**     **Mark**
+Mc        Mark, Space Combining
+Me        Mark, Enclosing
+Mn        Mark, Nonspacing
+N         **Number**
+Nd        Number, Decimal Digit
+Nl        Number, Letter
+No        Number, Other
+**P**     **Punctuation**
+Pc        Punctuation, Connector
+Pd        Punctuation, Dash
+Pe        Punctuation, Close
+Pf        Punctuation, Final Quote
+Pi        Punctuation, Initial Quote
+Po        Punctuation, Other
+Ps        Punctuation, Open
+**S**     **Symbol**
+Sc        Symbol, Currency
+Sk        Symbol, Modifier
+Sm        Symbol, Math
+So        Symbol, Other
+**Z**     **Separator**
+Zl        Separator, Line
+Zp        Separator, Paragraph
+Zs        Separator, Space
+========  ===========
 
 ``cypunct.unicode_classes.COMMON_SEPARATORS`` is the union of the ``C``, ``P``, ``S``, and ``Z``
 ``frozensets``. I have found it personally useful when splitting text for natural
 language processing applications.
 
-If` you don't specify a ``frozenset`` for Cypunct to use, then Cypunct will
+If you don't specify a ``frozenset`` for Cypunct to use, then Cypunct will
 default to ``COMMON_SEPARATORS``.
  
 Updating Unicode data
@@ -68,5 +114,3 @@ daily life.
 
 However, if you want to take on the challenge of rewriting Cypunct in C and having
 the exact same functionality as the current Cython version, I'll send you $100 USD.
-
-
