@@ -1,0 +1,8 @@
+recursive-include cypunct *
+include *
+global-exclude *.pyc
+exclude tox.ini
+exclude make_punctuation_file.py
+exclude lint.sh
+exclude .travis.yml
+exclude .gitignore
