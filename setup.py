@@ -3,7 +3,7 @@ import os
 from setuptools import Extension
 from setuptools import setup
 
-version = '0.1.1.dev0'
+version = '0.1.1'
 
 DESCRIPTION = (
     "Cypunct is a Cython package to split Unicode "
