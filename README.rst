@@ -9,7 +9,9 @@ Cypunct is a Cython extension, it will only work in the CPython
 runtime.
 
 For Python versions 2.6 and 2.7, Cypunct will only run if these
-CPython runtimes are
+CPython runtimes are compiled with the flag
+``--enable-unicode=ucs4``. Cypunct will throw an exception
+if your Python 2 runtime was not compiled with UCS-4.
 
 Usage
 =====
@@ -37,14 +39,14 @@ The below example splits on all Unicode punctuation, and nothing else.
     >>> split("James Mishra is the... best human ever, or so I think.", P)
     ['James Mishra is the', ' best human ever', ' or so I think', '']
  
-The following Unicode classes are available as sets:
+The following Unicode classes are available as sets:d
 'C', 'Cc', 'Cf', 'Co', 'Cs', 'L', 'Ll', 'Lm', 'Lo', 'Lt', 'Lu', 'M', 'Mc', 'Me', 'Mn', 'N', 'Nd', 'Nl', 'No', 'P', 'Pc', 'Pd', 'Pe', 'Pf', 'Pi', 'Po', 'Ps', 'S', 'Sc', 'Sk', 'Sm', 'So', 'Z', 'Zl', 'Zp', 'Zs'
 
 ``cypunct.unicode_classes.COMMON_SEPARATORS`` is the union of the ``C``, ``P``, ``S``, and ``Z``
 ``frozensets``. I have found it personally useful when splitting text for natural
 language processing applications.
 
-If` you don't specify a ``frozenset`` for Cypunct to use, then Cypunct will
+If you don't specify a ``frozenset`` for Cypunct to use, then Cypunct will
 default to ``COMMON_SEPARATORS``.
  
 Updating Unicode data
@@ -68,5 +70,3 @@ daily life.
 
 However, if you want to take on the challenge of rewriting Cypunct in C and having
 the exact same functionality as the current Cython version, I'll send you $100 USD.
-
-
