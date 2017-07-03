@@ -62,7 +62,7 @@ Cc        Other, Format
 Cf        Other, Not Assigned
 Co        Other, Private Use
 Cs        Other, Surrogate
-**L**     Letter
+**L**     **Letter**
 Ll        Letter, Lowercase
 Lm        Letter, Modifier
 Lo        Letter, Other
