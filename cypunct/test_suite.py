@@ -46,7 +46,7 @@ testcase = u'''James{0}{1}{2}{3}{4}{5}{6}{7}is{1}the{2}
 best{3}person{4}ever{5}to{6}have{7}ever lived.
 '''.format(Po, Ps, Sc, Sm, Cc, Cf, Zs, Zp) * 2000
 
-# This is a sample of a typical 
+# This is a sample of a typical
 exhaustive_testcase = u"James".join(
     cypunct.unicode_classes.COMMON_SEPARATORS)
 
@@ -72,7 +72,9 @@ class Tests(unittest.TestCase):
             setup=TEST_SETUP,
             number=self.bench_iterations,
         )
-        print("\nBenchmark results: ({0} loops)\n\n".format(self.bench_iterations))
+        print(
+            "\nBenchmark results: ({0} loops)\n\n".format(
+                self.bench_iterations))
         print("baseline speed:", baseline_speed, sep="\t")
         print("cypunct speed:", cypunct_speed, sep="\t")
 
