@@ -1,6 +1,10 @@
 
 cypunct: Fast-ish unicode string splitting
 ******************************************
+
+.. image:: https://travis-ci.org/jamesmishra/cypunct.svg?branch=master
+    :target: https://travis-ci.org/jamesmishra/cypunct
+
 Cypunct is designed to solve the problem of quickly splitting a Unicode
 string based on a set of characters.
 
@@ -21,6 +25,7 @@ Installation is easiest with pip. Just run
 
     pip install cypunct
 
+You can find Cypunct on PyPI at https://pypi.python.org/pypi/cypunct
 
 Usage
 =====
