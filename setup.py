@@ -12,6 +12,9 @@ setup(
     ext_modules=[
         Extension(
             "cypunct.cypunct", sources=["cypunct/cypunct.pyx"]
+        ),
+        Extension(
+            "cypunct.cpunct", sources=["cypunct/cpunct.c"]
         )
     ],
     setup_requires=[

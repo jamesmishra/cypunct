@@ -15,9 +15,10 @@ import timeit
 import unittest
 
 TEST_SETUP = """
-
+import gc
+gc.enable()
 import cypunct
-
+from cypunct import cpunct
 import regex
 
 baseline = regex.compile(
@@ -56,12 +57,20 @@ custom_split_set = set([u"a"])
 exec(TEST_SETUP)
 
 
+def timer(case):
+    print(case, end='\t')
+    t = timeit.Timer(stmt=case, setup=TEST_SETUP)
+    fastest = min(t.repeat(repeat=3, number=300))
+    print(fastest)
+
+
 class Tests(unittest.TestCase):
 
     bench_iterations = 300
 
     def test_benchmark(self):
         """Benchmark our code against a regex baseline."""
+        """
         baseline_speed = timeit.timeit(
             "baseline.split(testcase)",
             setup=TEST_SETUP,
@@ -75,6 +84,11 @@ class Tests(unittest.TestCase):
         print("\nBenchmark results: ({0} loops)\n\n".format(self.bench_iterations))
         print("baseline speed:", baseline_speed, sep="\t")
         print("cypunct speed:", cypunct_speed, sep="\t")
+        """
+        print("\nBenchmark results:\n\n")
+        timer("baseline.split(testcase)")
+        timer("cypunct.split(testcase) ")
+        timer("cpunct.split(testcase, cypunct.unicode_classes.COMMON_SEPARATORS)")
 
     def test_equality(self):
         """Check we split on the same tokens as the baseline."""
