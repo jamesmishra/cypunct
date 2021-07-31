@@ -54,8 +54,12 @@ The below example splits on all Unicode punctuation, and nothing else.
 
     >>> from cypunct.unicode_classes import P
     >>> split("James Mishra is the... best human ever, or so I think.", P)
-    ['James Mishra is the', ' best human ever', ' or so I think', '']
- 
+    ['James Mishra is the', ' best human ever', ' or so I think', ''] 
+
+
+The following Unicode classes are available as sets:d
+'C', 'Cc', 'Cf', 'Co', 'Cs', 'L', 'Ll', 'Lm', 'Lo', 'Lt', 'Lu', 'M', 'Mc', 'Me', 'Mn', 'N', 'Nd', 'Nl', 'No', 'P', 'Pc', 'Pd', 'Pe', 'Pf', 'Pi', 'Po', 'Ps', 'S', 'Sc', 'Sk', 'Sm', 'So', 'Z', 'Zl', 'Zp', 'Zs'
+
 The following Unicode classes are available as sets:
 
 
