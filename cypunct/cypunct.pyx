@@ -6,6 +6,30 @@ from cypunct.unicode_classes import COMMON_SEPARATORS
 
 
 cpdef split(unicode input_str, frozenset split_chars=None):
+    """
+    Split a unicode str with a frozenset of code points as delimiters.
+
+    Example:
+        >>> from cypunct import split
+        >>> split("James Mishra is the... best human ever, or so I think.", frozenset({' ', '.', ','}))
+        ['James', 'Mishra', 'is', 'the', 'best', 'human', 'ever', 'or', 'so', 'I', 'think', '']
+
+    Args:
+        input_str(unicode): A string that you want to split into a
+            list of Unicode strings.
+
+        split_chars(frozenset): This is a ``frozenset`` (and no,
+            a regular ``set`` won't do), of delimiters. Each
+            delimiter should be a single Unicode code point.
+            If ``split_chars`` is not provided, we will default to
+            ``cypunt.unicode_classes.COMMON_SEPARATORS``.
+
+    Returns:
+        (list): A list of Unicode strings, made up of splitted
+            portions of ``input_str``, not including any of the
+            delimiters in ``split_chars``.
+
+    """
     if split_chars is None:
         split_chars = COMMON_SEPARATORS
     output = []

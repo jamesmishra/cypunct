@@ -2,6 +2,9 @@
 UnicodeData.txt
 cypunct/cypunct.c
 
+# Don't check in PyPI credentials
+.pypirc
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
